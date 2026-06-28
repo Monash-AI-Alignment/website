@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Monash AI Alignment</title>
+  <meta name="description" content="A research group at Monash University working on technical AI alignment and safety." />
+  <link rel="icon" type="image/svg+xml" href="assets/logo-blue.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="/" aria-label="Monash AI Alignment">
+      <img src="assets/logo-blue.svg" alt="Monash AI Alignment" />
+    </a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>
+        Advanced AI is coming.<br />
+        Let&rsquo;s make sure it goes well.
+      </h1>
+      <p class="lede">
+        Monash AI Alignment is a research group at Monash University working on
+        the technical problems of making advanced AI systems safe, honest, and
+        controllable.
+      </p>
+      <div class="cta-row">
+        <a class="btn primary" href="#research">Our research &darr;</a>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <h2>About</h2>
+      <p>
+        We are a group of Masters students, PhD candidates, and researchers
+        based at Monash, led by <strong>Dr.&nbsp;Trung Le</strong>, with
+        contributions from faculty including <strong>Prof.&nbsp;Mehrtash Harandi</strong>.
+        Our work focuses on the technical foundations of AI alignment &mdash;
+        understanding what frontier models are doing internally, and developing
+        the tools to keep them aligned with human intent as their capabilities
+        grow.
+      </p>
+      <p>
+        We meet regularly to discuss papers, share work-in-progress, and
+        collaborate on research projects. New members are welcome.
+      </p>
+    </section>
+
+    <section id="research" class="section">
+      <h2>Research areas</h2>
+      <ul class="areas">
+        <li>
+          <h3>Feature decomposition</h3>
+          <p>
+            Sparse autoencoders and related methods for decomposing model
+            internals into interpretable features &mdash; the foundation for
+            understanding what neural networks have learned.
+          </p>
+        </li>
+        <li>
+          <h3>Safety steering</h3>
+          <p>
+            Activation-level interventions and steering vectors that shape model
+            behaviour without retraining, building on advances in
+            interpretability.
+          </p>
+        </li>
+        <li>
+          <h3>Watermarking &amp; fingerprinting</h3>
+          <p>
+            Provenance techniques for large language models that remain robust
+            under fine-tuning, quantisation, and adversarial removal.
+          </p>
+        </li>
+        <li>
+          <h3>Hallucinations</h3>
+          <p>
+            Understanding and mitigating the conditions under which language
+            models generate confident but ungrounded outputs.
+          </p>
+        </li>
+      </ul>
+    </section>
+
+    <section id="people" class="section">
+      <h2>People</h2>
+      <p>
+        The group is led by <strong>Dr.&nbsp;Trung Le</strong>, with active
+        involvement from <strong>Prof.&nbsp;Mehrtash Harandi</strong> and a
+        growing cohort of Masters and PhD researchers across the Faculty of
+        Information Technology and the Department of Electrical and Computer
+        Systems Engineering.
+      </p>
+      <p>
+        If you&rsquo;re a Monash student or researcher interested in joining,
+        please get in touch by email.
+      </p>
+    </section>
+
+    <section id="join" class="section join">
+      <h2>Get involved</h2>
+      <p>
+        Discussion, reading-group sessions, and project coordination happen on
+        our internal forum. The forum is publicly readable, but participation
+        is limited to invited members.
+      </p>
+      <div class="cta-row">
+        <a class="btn primary" href="https://forum.monashaialignment.org">Read the forum</a>
+        <a class="btn ghost" href="mailto:hello@monashaialignment.org">Email</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="foot-row">
+      <p>&copy; <span id="year"></span> Monash AI Alignment</p>
+      <p class="muted">Not officially affiliated with Monash University.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
