@@ -1,0 +1,10 @@
+# Cloudflare Workers Assets serves EVERY file in the deploy directory unless excluded here.
+# Keep internal/planning/config files out of the public site.
+docs/
+.wrangler/
+.gitignore
+.assetsignore
+wrangler.jsonc
+README.md
+*.md
+research/_template.html

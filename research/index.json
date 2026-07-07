@@ -1,0 +1,13 @@
+{
+  "posts": [
+    {
+      "slug": "collaborative-decoding",
+      "title": "Autonomously Researching Weak-to-Strong Collaborative Decoding for Fingerprint Removal",
+      "authors": ["Sean Murphy"],
+      "date": "2026-07-06",
+      "summary": "An autonomous research agent asks whether a small unwatermarked model can launder a large watermarked model's output by writing most of the tokens itself — a living report on watermark dilution.",
+      "tags": ["watermarking", "security", "autonomous-research"],
+      "status": "live"
+    }
+  ]
+}

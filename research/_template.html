@@ -1,0 +1,71 @@
+<!doctype html>
+<!--
+  HOW TO ADD A RESEARCH POST
+  1. Copy this file:  cp research/_template.html research/<slug>.html
+  2. Fill in every EDIT marker below (title, authors, abstract, body, bibliography).
+  3. Add an entry for the post to research/index.json:
+       { "slug": "<slug>", "title": "...", "authors": ["..."], "date": "YYYY-MM-DD",
+         "summary": "one-two sentences", "tags": ["..."], "status": "live" }
+  4. Commit + push. It goes live at /research/<slug> and appears on /research.
+  Distill docs: https://distill.pub/guide/  ·  Math is KaTeX ($…$ / $$…$$). Citations use <d-cite key="...">.
+-->
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+  <!-- EDIT: page <title> -->
+  <title>Post Title Goes Here — Monash AI Alignment</title>
+  <script src="/assets/distill.template.v2.js"></script>
+</head>
+<body>
+  <!-- Monash header bar (keep) -->
+  <div style="max-width:960px;margin:0 auto;padding:16px 24px 0;font-family:'Inter',system-ui,sans-serif">
+    <a href="/research" style="color:#006dae;text-decoration:none;font-size:14px">← Monash AI Alignment · Research</a>
+  </div>
+
+  <d-front-matter>
+    <!-- NOTE: keep the katex "delimiters" order below as $$ before $ — auto-render walks this
+         array in sequence, so a single-$ entry listed first would consume the two adjacent $
+         characters of every $$..$$ block as two empty math spans (raw TeX left unrendered). -->
+    <script type="text/json">{
+      "title": "Post Title Goes Here",
+      "description": "One-sentence description for previews.",
+      "authors": [ { "author": "Your Name", "authorURL": "" } ],
+      "katex": { "delimiters": [ {"left": "$$", "right": "$$", "display": true}, {"left": "$", "right": "$", "display": false} ] }
+    }</script>
+  </d-front-matter>
+
+  <d-title>
+    <!-- EDIT: title + one-line tagline -->
+    <h1>Post Title Goes Here</h1>
+    <p>A one-line tagline for the post.</p>
+  </d-title>
+
+  <d-byline></d-byline>
+
+  <d-article>
+    <!-- EDIT: abstract / intro -->
+    <p>Write the opening here. Inline math like $a^2 + b^2 = c^2$ and display math:</p>
+    $$ \text{recovery} = \frac{U_\text{collab}}{U_\text{strong}} $$
+
+    <h2>Section</h2>
+    <p>Body text. Cite sources like this <d-cite key="example2020"></d-cite>.</p>
+  </d-article>
+
+  <d-appendix>
+    <h3>References</h3>
+    <d-bibliography></d-bibliography>
+  </d-appendix>
+
+  <!-- EDIT: bibliography — MUST be type="text/bibtex" -->
+  <script type="text/bibtex">
+    @article{example2020,
+      title={An example reference},
+      author={Doe, Jane},
+      journal={Journal of Examples},
+      year={2020}
+    }
+  </script>
+</body>
+</html>
