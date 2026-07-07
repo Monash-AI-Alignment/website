@@ -25,11 +25,14 @@
   </div>
 
   <d-front-matter>
+    <!-- NOTE: keep the katex "delimiters" order below as $$ before $ — auto-render walks this
+         array in sequence, so a single-$ entry listed first would consume the two adjacent $
+         characters of every $$..$$ block as two empty math spans (raw TeX left unrendered). -->
     <script type="text/json">{
       "title": "Post Title Goes Here",
       "description": "One-sentence description for previews.",
       "authors": [ { "author": "Your Name", "authorURL": "" } ],
-      "katex": { "delimiters": [ {"left": "$", "right": "$", "display": false}, {"left": "$$", "right": "$$", "display": true} ] }
+      "katex": { "delimiters": [ {"left": "$$", "right": "$$", "display": true}, {"left": "$", "right": "$", "display": false} ] }
     }</script>
   </d-front-matter>
 
