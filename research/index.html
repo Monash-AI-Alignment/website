@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Research — Monash AI Alignment</title>
+  <meta name="description" content="Research writeups and living reports from Monash AI Alignment." />
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+  <style>
+    .posts { max-width: var(--maxw); margin: 0 auto; padding: 8px 24px 64px; list-style: none; }
+    .post-card { display: block; padding: 26px 0; border-top: 1px solid var(--border); text-decoration: none; color: inherit; }
+    .post-card:last-child { border-bottom: 1px solid var(--border); }
+    .post-card:hover { text-decoration: none; }
+    .post-card:hover .post-title { color: var(--accent); }
+    .post-title { font-size: 1.3rem; font-weight: 600; margin: 0 0 6px; color: var(--text); letter-spacing: -0.01em; line-height: 1.25; }
+    .post-meta { font-size: 0.85rem; color: var(--text-mute); margin: 0 0 10px; }
+    .post-summary { margin: 0 0 14px; color: var(--text-dim); }
+    .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag { font-size: 0.72rem; padding: 3px 10px; border-radius: 999px; background: #eef4f8; color: var(--accent-dark); }
+    .posts .empty { color: var(--text-mute); padding: 26px 0; border-top: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="/" aria-label="Monash AI Alignment"><img src="/assets/logo-blue.svg" alt="Monash AI Alignment" /></a>
+  </header>
+  <main>
+    <section class="section">
+      <h2>Research</h2>
+      <p>Writeups and living reports from the group.</p>
+    </section>
+    <ul class="posts" id="posts"><li class="empty">Loading…</li></ul>
+  </main>
+  <footer>
+    <div class="foot-row">
+      <p>&copy; <span id="year"></span> Monash AI Alignment</p>
+      <p class="muted"><a href="/">Home</a></p>
+    </div>
+  </footer>
+  <script>
+    const yEl = document.getElementById("year"); if (yEl) yEl.textContent = new Date().getFullYear();
+    const fmtDate = iso => new Date(iso + "T00:00:00").toLocaleDateString("en-AU", { year: "numeric", month: "short", day: "numeric" });
+    (async function render() {
+      const list = document.getElementById("posts");
+      try {
+        const res = await fetch("/research/index.json", { cache: "no-store" });
+        const data = await res.json();
+        const posts = (data.posts || [])
+          .filter(p => p.status !== "draft")
+          .sort((a, b) => String(b.date).localeCompare(String(a.date)));
+        if (!posts.length) { list.innerHTML = '<li class="empty">No posts yet.</li>'; return; }
+        list.textContent = "";
+        for (const p of posts) {
+          const card = document.createElement("a");
+          card.className = "post-card";
+          card.href = "/research/" + p.slug;
+          const h = document.createElement("h3"); h.className = "post-title"; h.textContent = p.title;
+          const meta = document.createElement("p"); meta.className = "post-meta";
+          meta.textContent = (p.authors || []).join(", ") + (p.date ? " · " + fmtDate(p.date) : "");
+          const sum = document.createElement("p"); sum.className = "post-summary"; sum.textContent = p.summary || "";
+          const tags = document.createElement("div"); tags.className = "tags";
+          for (const t of (p.tags || [])) { const s = document.createElement("span"); s.className = "tag"; s.textContent = t; tags.appendChild(s); }
+          card.append(h, meta, sum, tags);
+          list.appendChild(card);
+        }
+      } catch (e) {
+        list.innerHTML = '<li class="empty">Could not load posts.</li>';
+      }
+    })();
+  </script>
+</body>
+</html>
