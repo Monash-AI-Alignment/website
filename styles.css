@@ -144,10 +144,6 @@ a:hover { color: var(--accent-dark); text-decoration: underline; }
   font-size: 0.97rem;
 }
 
-/* ---------- Join ---------- */
-.join { text-align: center; padding-bottom: 80px; }
-.join .cta-row { margin-top: 8px; }
-
 /* ---------- Footer ---------- */
 footer {
   border-top: 1px solid var(--border);
